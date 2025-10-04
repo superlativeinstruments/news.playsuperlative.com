@@ -13,25 +13,19 @@
 	box-sizing: border-box;
 }
 
-html,
-body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
+* {
+	box-sizing: border-box;
 }
 
+html,
 body {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 50px 1fr;
-	gap: 2rem;
-	grid-template-areas:
-		"header"
-		"main";
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+	background-color: var(--white);
 }
 
 header {
-	grid-area: header;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: auto;
@@ -39,6 +33,8 @@ header {
 	justify-content: space-between;
 	font-family: 'SL-Regular-Condensed', sans-serif;
 	padding: 1rem;
+	height: 50px;
+	margin-bottom: 4rem;
 }
 
 header > * {
@@ -55,44 +51,49 @@ header > * {
 	width: auto;
 }
 
-.header-logo {
+.header-logo,
+header a {
+	display: block;
 	height: 30px;
 	width: auto;
 	justify-self: end;
 }
 
 main {
-	position: relative;
 	display: grid;
-	grid-area: main;
-	gap: 4rem;
+	gap: 8rem;
 	align-items: center;
 	justify-items: center;
 	padding: 2rem;
-	border: 1rem solid var(--white);
-	background-color: var(--light_gray);
-	z-index: 0;
 }
 
-.body {
-	font-variant-ligatures: normal;
+section {
+	width: 100%;
 }
 
 article {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: start;
+	justify-content: space-between;
+	column-gap: 8rem;
 	width: 100%;
-	max-width: 60rem;
+	max-width: 80rem;
 	margin: auto;
-	background-color: var(--white);
+}
+
+.article-date {
+	text-transform: uppercase;
 }
 
 h1 {
-	font-family: 'SL-Light', sans-serif;
-	font-size: 2rem;
+	font-family: 'SL-Regular-Condensed', sans-serif;
+	font-size: 1.5rem;
 	line-height: 1;
-	text-align: center;
 	text-transform: uppercase;
 	color: var(--dark_gray);
-	margin: 0;
+	margin: 1.5rem 0;
+	margin-top: 0.3rem;
 }
 
 h2 {
@@ -101,30 +102,39 @@ h2 {
 	line-height: 1;
 	text-transform: uppercase;
 	color: var(--dark_gray);
-	margin: 2rem 0;
+	margin: 1.5rem 0;
 }
 
-header a {
-	text-decoration: none;
+h3 {
+	font-family: 'SL-Regular-Condensed', sans-serif;
+	font-size: 1.2rem;
+	line-height: 1;
+	text-transform: none;
+	color: var(--dark_gray);
+	margin: 1rem 0;
+}
+
+h4 {
+	font-family: 'SL-Regular-Condensed', sans-serif;
+	font-size: 1rem;
+	line-height: 1;
+	text-transform: none;
+	color: var(--dark_gray);
+	margin: 1rem 0;
+}
+
+p {
+	font-family: 'SL-Regular', sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.4;
 	color: var(--black);
-	width: 100%;
-	max-width: 60rem;
-	height: fit-content;
-	margin-right: 1rem;
+	margin: 0 0 1.5rem;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 header a:hover {
 	color: var(--gray);
-}
-
-a {
-	display: block;
-	text-decoration: none;
-	color: var(--black);
-	width: 100%;
-	max-width: 60rem;
-	height: fit-content;
-	color: var(--dark_gray);
 }
 
 a .arrow {
@@ -133,8 +143,73 @@ a .arrow {
 	animation: arrowAnimationReverse 0.3s ease-in-out forwards;
 }
 
+section a {
+	text-decoration: none;
+	color: var(--dark_gray);
+}
+
 a:hover .arrow {
 	animation: arrowAnimation 0.2s ease-out forwards;
+}
+
+code {
+	font-family: "SL-Regular-Condensed", sans-serif;
+	font-size: 1rem;
+	line-height: inherit;
+	color: inherit;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-break: break-all;
+	overflow-x: auto;
+	background-color: var(--light_gray);
+	padding: 1rem;
+	border-radius: 0.25rem;
+}
+
+pre code {
+	font-family: "Space Mono", monospace;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--black);
+}
+
+table {
+	/* width: 66.666%; */
+	width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	border-collapse: collapse;
+	margin: 2rem 0;
+	break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+th,
+td {
+	padding: 0.5rem;
+}
+
+th {
+	text-align: left;
+}
+
+tr {
+	border-bottom: 1px solid black;
+	padding: 1rem;
+}
+
+td {
+	height: calc((0.5rem * 3.36) + 1rem);
+	white-space: nowrap;
+}
+
+thead tr {
+	border-bottom: 0.5rem solid black;
 }
 
 @keyframes arrowAnimation {
@@ -161,6 +236,17 @@ a:hover .arrow {
 	}
 }
 
+@media (max-width: 55rem) {
+	main {
+		gap: 4rem;
+	}
+
+	article {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+	}
+}
+
 @media (max-width: 600px) {
 	header {
 		grid-template-columns: 1fr 1fr;
@@ -168,5 +254,14 @@ a:hover .arrow {
 
 	.header-lockup {
 		display: none;
+	}
+
+	section {
+		max-width: 100%;
+	}
+
+	table {
+		width: 100%;
+		max-width: initial;
 	}
 }
