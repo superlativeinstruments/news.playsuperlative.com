@@ -150,7 +150,6 @@ a .arrow {
 }
 
 section a {
-	text-decoration: none;
 	color: var(--dark_gray);
 }
 
@@ -158,9 +157,12 @@ a:hover .arrow {
 	animation: arrowAnimation 0.2s ease-out forwards;
 }
 
-img {
+img,
+video {
 	max-width: 100%;
 	height: auto;
+	border: none;
+	outline: none;
 }
 
 code {
@@ -174,7 +176,7 @@ pre {
 	white-space: pre-wrap;
 	word-break: break-all;
 	overflow-x: auto;
-	background-color: var(--light_gray);
+	background-color: white;
 	padding: 1rem;
 	border-radius: 0.25rem;
 }
