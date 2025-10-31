@@ -34,12 +34,19 @@
 				<img src="/assets/images/new-firmware-release-oct-31-2025.jpg" alt="New SB01 Firmware Oct 31 2025">
 
 				<p>Since the initial release of the SB01 we have rewritten the firmware from the ground up to provide class-leading MIDI performance and major new features.</p>
+
 				<p>The top most priority has been MIDI — both latency and stability. Although MIDI is considered old technology it's far from easy to get right, especially on modern systems where so many things compete for resources. Due to unfortunate technology debt suffered early on in the project and sub par frameworks from the microcontroller manufacturer; we were left with no other choice but to do a complete redesign. The result is a beautiful piece of software architecture several thousand lines of code less than the previous implementation. The resulting MIDI performance speaks for itself – USB MIDI latency is now as low as 30µs. TRS MIDI is only limited by baudrate, which makes it as good as it gets. We are very proud of this. It has been hard work getting to this point, but the result is most definitely worth the countless hours spent on it.</p>
+
 				<p>Having buttoned up MIDI, we could focus on new and previously planned features.</p>
+
 				<p>First, we felt a simplification of the control app was in order. The old matrix UI for MIDI routing was removed in favor of a simpler approach.</p>
+
 				<p>Tuning tables was next.<br>Since the very start of the project we have been dreaming of being able to play with alternative tunings, so next up was designing an interface for this. What we ended up with is in our opinion beautifully simple. You can set an offset (in cents) for every note, upload <code>.tun</code> tuning table files or choose from presets. Tuning is applied in real-time and makes it fun to experiment with alternative tunings.</p>
+
 				<p>Having made an experimental section in the control app for tuning tables, we could also move an easter egg function to the front — it's called <code>32' Range</code> and it simply lowers the instrument pitch by an octave so you can access the most bone shakingly deep notes the VCO can produce.</p>
-				<p>One of the most inspiring things to play with on a synthesizer is the arpeggiator. Having covered the basics with up, up/down, down and random modes, we set out to design a few more. The first is called Edge mode, where the first and last note is repeated twice. Sounds simple but it really adds just the right amount of rhythmic complexity. Last but not least are Caterpillar up and Caterpillar down modes – both extremely musical, and something we haven't seen on any other instrument.</p>
+
+				<p>One of the most inspiring things to play with on a synthesizer is the arpeggiator. Having covered the basics with up, up/down, down and random modes, we set out to design a few more. The first is called Corner mode, where the first and last note is repeated twice. Sounds simple but it really adds just the right amount of rhythmic complexity. Last but not least are Caterpillar up and Caterpillar down modes — both extremely musical, and something we haven't seen on any other instrument.</p>
+
 				<p>These new arpeggiator modes are also available for the internal sequencer.</p>
 
 				<p>The firmware redesign opened the door for additional MIDI event handling. We added pitch bend support, as well as mod wheel support. Mod wheel controls MOD CV, and can be used to modulate filter cutoff. This is exciting news for those who automate via MIDI.</p>
@@ -64,7 +71,7 @@
 - MIDI input mod wheel support. Incoming mod wheel messages to the `INTERNAL` channel will control the same CV as the `MOD CV` input. This can be used to control the filter.
 - MIDI song selection support to load sequencer patterns.
 - New arpeggiator `Caterpillar` up/down modes.
-- New arpeggiator `Edge` mode.
+- New arpeggiator `Corner` mode.
 - New `Chord` mode (MIDI output).
 - New `Reset` function for sequencer.
 - LED feedback when saving sequence. `INTERNAL` and `EXTERNAL` LEDs will blink once when saving is complete. Saving will never fail. This feedback is just to explicity inform the user that saving is done.
