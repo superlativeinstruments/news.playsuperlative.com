@@ -85,13 +85,17 @@ article {
 article aside,
 article section {
 	display: grid;
-	gap: 1.5rem;
 	width: 100%;
 }
 
 article aside {
 	position: sticky;
 	top: 4rem;
+	gap: 1.5rem;
+}
+
+article section {
+	gap: 2rem;
 }
 
 .article-date {
@@ -168,6 +172,7 @@ video {
 	height: auto;
 	border: none;
 	outline: none;
+	border-radius: 0.25rem;
 }
 
 code {
@@ -183,6 +188,7 @@ pre {
 	overflow-x: auto;
 	background-color: white;
 	padding: 1rem;
+	margin: 0;
 	border-radius: 0.25rem;
 }
 
