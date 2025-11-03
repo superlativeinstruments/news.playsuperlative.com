@@ -54,12 +54,24 @@ body > header > * {
 	width: auto;
 }
 
-.header-logo,
 body > header a {
 	display: block;
 	height: 30px;
 	width: auto;
+}
+
+body > header a img {
+	height: 100%;
+	width: auto;
+}
+
+.header-logo {
 	justify-self: end;
+}
+
+body > header a:hover {
+	color: var(--gray);
+	opacity: 0.5;
 }
 
 main {
@@ -146,10 +158,6 @@ p {
 	margin: 0;
 	text-align: justify;
 	text-justify: inter-word;
-}
-
-header a:hover {
-	color: var(--gray);
 }
 
 a .arrow {
