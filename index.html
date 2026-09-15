@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -28,6 +28,103 @@
 	</header>
 
 	<main>
+		<article>
+			<aside>
+				<h1>New SB01 Firmware Release</h1>
+				<p class="article-date">September 15, 2026</p>
+			</aside>
+
+			<section>
+				<img src="/assets/images/new-firmware-release-sep-15-2026.jpg" alt="New SB01 Firmware Sep 15 2026">
+
+                <p><strong>After a succession of betas we are finally ready for a new mainline release. A host of improvements, fixes and additions makes the SB01 better than ever!</strong></p>
+
+                <p>Leading up to the manufacturing of the second batch of SB01s we wanted to bring something new to the instrument celebrating the milestone.</p>
+
+                <p>Some of you might have noticed the <code>REC</code> label on the front panel. Up until now this shift layer function has been left unused. We wanted to rectify that and finalize what was intended.<br/><code>REC</code> is now a real-time sequence editor. After loading a sequence, <code>SHIFT</code>+<code>REC</code> can be pressed to enter live edit mode. When in this mode the sequence will play, and the events can be modified by holding a key, <code>LEGATO</code>+key or <code>REST</code> when the clock ticks.</p>
+
+                <p>Live edit mode brings a fun and immediate way of interacting with sequences — great for changing things up while performing.</p>
+
+                <p>Getting user feedback is fantastic, especially when we can help someone realize their goals by adding something or changing something for the better.</p>
+
+                <p>We have gotten a few requests this past year, and it has been extremely good fun to work on your specific problems as apposed to problems we make up for ourselves.</p>
+
+                <p>The highligts of such user collaborations are:
+                    <ul>
+                        <li>MIDI note offset configuration (for working with gear with unconventional MIDI note translation)</li>
+                        <li>TRS MIDI soft-thru (for easier MIDI patching)</li>
+                        <li>USB MIDI soft-thru (use the SB01 as USB MIDI interface)</li>
+                        <li>On-device configuration menu (For configuring MIDI etc. when in the field without a computer)</li>
+                    </ul>
+                </p>
+
+				<p>To upgrade, connect your SB01 to your computer and power on while holding the SHIFT button. Follow the instructions on screen or navigate to <a href="https://firmware.playsuperlative.com/" target="_blank">firmware.playsuperlative.com</a>.</p>
+				<p>Here is the complete change log:</p>
+				<pre>
+				<code>
+### Improvements
+
+- On-device configuration (See new addition to the manual for instructions).
+- Ability to set MIDI note output offsets for both internal and external channels. This is useful when working with gear that does not follow the A4 = 440 Hz MIDI norm. Settings can be reached via the on-device configuration menu or the control panel app.
+- Added TRS MIDI in to TRS MIDI out soft-thru. Disabled by default. Can be configured in the control app. Useful when daisy-chaining devices.
+- Added USB MIDI in to TRS MIDI out soft-thru. Disabled by default. Can be configured in the control app. Useful when needing the SB01 to act as a USB MIDI interface.
+- Added LED feedback when entering legato and rest events.
+- Made `PORTAMENTO` channel independent. This way you can have portamento on for one channel and off for the other. The drawback is that the `PORTAMENTO` toggle switch is not always in sync with the actual portamento state of each channel. We feel this is an acceptable trade-off for the added flexibility.
+- Added MIDI input vibrato toggle support. Vibrato is handled through MIDI CC21 messages on the `INTERNAL` channel. A value of 0-63 turns vibrato off, and a value of 64-127 turns vibrato on.
+- Added support for more complex USB devices in USB host mode.
+- Added MIDI output when in USB host mode. The SB01 can now control connected USB MIDI devices.
+- Added sequencer `REC` mode. By pressing `SHIFT` + `REC`, a loaded sequence can be live edited. (See new manual entry for details).
+
+
+### Fixes
+
+- Fixed issue where the sequencer corner playback mode could go out of bounds and stop/corrupt the active sequence.
+- Fixed issue where a note would hang if key on/off action was made close to or under 1ms apart when in `GATE + TRIG` `ENV` mode.
+- Fixed issue where chain was not applied before releasing chain button.
+- Fixed issue where battery measurement animation was blinking.
+- Fixed issue where the arpeggiator didn't affect the `INTERNAL` channel in `BOTH` mode.
+- Fixed issue where USB MIDI input would cause intermitheard glitches mostly heard as double triggering of notes.
+- Fixed issue where `Caterpillar` down arpeggiator mode sometimes played an unwanted low note.
+- Fixed issue where `Corner` sequencer mode stopped the sequence.
+- Fixed issue where `Caterpillar` up/down sequencer mode created identical results.
+- Fixed prevaling issue where USB MIDI input would cause intermittent glitches mostly heard as double triggering of notes. This was ultimatly caused by interrupt priority conflicts. The previous fix was proved insufficient at high MIDI input rates.
+- Fixed issue where `HOLD` did not work correctly in `PLAY` mode.
+- Fixed issue when pressing `HOLD` in `PLAY` mode while at a rest step caused the sequencer to mute until `HOLD` was toggled off.
+- Fixed issue where legato notes where not handled correctly in `PLAY` mode.
+- Fixed issue where portamento `ON` was not applied correctly in `PLAY` mode.
+- Fixed issue where changing to any arpeggiator mode from `PLAY` mode did nothing.
+- Fixed handling of mode changes in `BOTH` mode.
+- Fixed accidental breakage of arpeggiator in previous release.
+- Fixed issue where `LOAD` reset sequencer when no editing was done. Sequencer should only reset if an edit was made.
+- Fixes issue where keys eventually got stuck when playing many notes while `HOLD` was active.
+- Added missing `TRANSPOSE` `LATCH` mode (SHIFT + TRANSPOSE).
+- Fixed issue where last played note was not released via MIDI when jumping to another sequence.
+- Fixed issue where external trigger output was stuck high.
+- Fixed issue where external channel arpeggiator would reset the LFO when entering `ARPEGGIATOR` mode when the internal channel had arpeggiator active causing unwanted pause.
+- Fixes issue where tuning was not applied to the external channel when editing in the control app.
+- Fixed developers sense of humor.
+- Fixed issue where `HOLD` was not properly reset when entering sequencer `LOAD` mode.
+- Fixed issue where changing channel would sometimes disrupt the gate on running sequences.
+- Fixed issue where a sequence could not begin with one or more rest events.
+- Fixed issue where LFO was not reset when key was pressed in `LFO` envelope mode.
+- Fixed issue where activating arpeggiator without keys held would reset the LFO.
+- Fixed issue where pressing the `CHAIN` button reset playing sequence.
+- Fixed issue where chain was never reset.
+- Fixed issue where new chain did not wait for current sequence to finish before starting.
+- Fixed issue where reconnecting USB devices in USB host mode caused MIDI transmition and reception to stop.
+- Reintegrated missing CDC API end-points (internal tooling issue, users not affected)
+- Fixed issue where USB4/Thunderbolt cable connected to the SB01 and not connected to anything at the other end would affect LFO/clock stability.
+
+### Changes
+
+- Changed the algorithm governing received MIDI start/continue/stop messages. The instrument remembers if sequencer or arpeggiator was last active, and starts/stops the last active mode – defaulting to sequencer if no last active mode detected.
+- Prevent chaining to empty sequences.
+
+                </code>
+                </pre>
+		    </section>
+		</article>
+
 		<article>
 			<aside>
 				<h1>New SB01 Firmware Release</h1>

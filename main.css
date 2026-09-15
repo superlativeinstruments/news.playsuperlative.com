@@ -160,6 +160,16 @@ p {
 	text-justify: inter-word;
 }
 
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li {
+    font-size: 1.2rem;
+	line-height: 1.4;
+}
+
 a .arrow {
 	position: relative;
 	display: inline-block;
